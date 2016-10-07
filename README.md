@@ -1,14 +1,15 @@
-**GoEuro Assignment**
+##GoEuro Assignment
 The assignment is a command line program.
 Based on the argument passed (CityName), it makes HTTP call to a remote server and writes the output in CSV format.
 The output is also printed to the STDOUT.
 
-**Structure**
+##Structure
 The program is a simple JAVA Application. 
 I have resisted using Spring as in my opinion it would have been an overkill and bloated the executable for 
 not good reason.
 
 The solution is divided into multiple packages:
+
 1. client - Contains classes related to HTTPClient. ThriftClient, ProtoBuf and other code will go here.
   * Would have used [Netflix's Hystrix](https://github.com/Netflix/hystrix) (for connection pooling), however for a command line program it is not very useful. 
 2. exception - Custom exceptions are declared here.
@@ -18,14 +19,15 @@ The solution is divided into multiple packages:
   * It contains an abstract class "Service", which contains the common features of all service we will possibly integrate. In a micro service architecture, it becomes difficult to manage and debug and pin-point a fault. Basic sanity and hygiene practices will go here so that it is inherited by every service.
 6. Configuration - Configuration management of the application.
 
-**Execution**
+##Execution
+
 Since it a maven project
-BUILD
+###BUILD
 ``mvn clean install``
 
-TEST
+###TEST
 ``mvn test``
 
-RUN
+###RUN
 ``java -jar goeuro.jar <CITY>``
 ``java -jar goeuro.jar Berlin``
