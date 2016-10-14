@@ -5,6 +5,7 @@ import com.goeuro.interview.model.csv.CityBuilder;
 import com.goeuro.interview.model.pojo.City;
 import com.goeuro.interview.service.locationservice.ILocationService;
 import com.goeuro.interview.service.locationservice.LocationServiceImpl;
+import com.mashape.unirest.http.Unirest;
 
 import java.io.*;
 
@@ -42,6 +43,12 @@ class GoEuroApp {
         } catch (Exception | Error e) {
             System.err.println(e.getCause());
             System.exit(1);
+        } finally {
+            try {
+                Unirest.shutdown();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
